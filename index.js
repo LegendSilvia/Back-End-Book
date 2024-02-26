@@ -42,6 +42,41 @@ const Book = sequelize.define('book', {
         allowNull: false
     },
 });
+const users = sequelize.define('users', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    username: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    email: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    fname: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    lname: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    phone: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    address: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+});
 
 sequelize.sync();
 
