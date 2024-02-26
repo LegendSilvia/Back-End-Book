@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json());
 
-const Database_conn = 'postgres://webadmin:PFNdha24303@node59449-book-ecom.proen.app.ruk-com.cloud/Books';
+const Database_conn = 'postgres://webadmin:PFNdha24303@node59447-book-ecom.proen.app.ruk-com.cloud:11931/Books';
 const sequelize = new Sequelize(Database_conn);
 
 const Book = sequelize.define('book', {
@@ -20,7 +20,27 @@ const Book = sequelize.define('book', {
     author: {
         type: Sequelize.STRING,
         allowNull: false
-    }
+    },
+    type_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    genre_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    theme_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    stock: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    price: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
 });
 
 sequelize.sync();
