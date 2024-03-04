@@ -26,11 +26,11 @@ const Book = sequelize.define('book', {
         allowNull: false
     },
     genre_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.ARRAY,
         allowNull: false
     },
     theme_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.ARRAY,
         allowNull: false
     },
     stock: {
