@@ -21,15 +21,15 @@ const Book = sequelize.define('book', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    type_id: {
+    type: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    genre_id: {
+    genre: {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    theme_id: {
+    theme: {
         type: Sequelize.TEXT,
         allowNull: false
     },
