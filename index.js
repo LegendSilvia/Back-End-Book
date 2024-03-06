@@ -4,6 +4,7 @@ const app = express();
 
 app.use(express.json());
 
+// const Database_conn = 'postgres://webadmin:PFNdha24303@node59447-book-ecom.proen.app.ruk-com.cloud:11931/Books';
 const Database_conn = 'postgres://webadmin:PFNdha24303@node59447-book-ecom.proen.app.ruk-com.cloud/Books';
 const sequelize = new Sequelize(Database_conn);
 
@@ -111,6 +112,60 @@ const Themes = sequelize.define('themes', {
         allowNull: false
     }
 });
+const Order_headers = sequelize.define('order_headers', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    address: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    phone: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    address: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    status: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+});
+const Order_lines = sequelize.define('order_lines',{
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    order_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    book_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    quantity: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    totalOP: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    totalOP: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
+});
 
 sequelize.sync();
 
@@ -173,6 +228,32 @@ app.get('/users', (req, res) => {
 app.post('/users', (req, res) => {
     Users.create(req.body).then(users => {
         res.send(users);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.get('/placeOrder', (req, res) => {
+    Order_headers.findAll().then(order => {
+        res.json(order);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.post('/placeOrder', (req, res) => {
+    console.log("Got data")
+    Order_headers.create(req.body).then(order_headers => {
+        console.log("initiated")
+        res.send(order_headers);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.post('/placeOrderLine', (req, res) => {
+    Order_lines.create(req.body).then(order => {
+        res.send(order);
     }).catch(err => {
         res.status(500).send(err);
     });
