@@ -6,3 +6,5 @@
 | ORM       | Sequelize                 |
 | DB Driver | pg                        |
 | Dev Tools | nodemon, prettier, dotenv |
+
+For Front-End Server https://github.com/LegendSilvia/Front-End-Server-BookStore-
