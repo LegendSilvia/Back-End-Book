@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const { types } = require('pg');
 const { Sequelize, DataTypes } = require('sequelize');
@@ -5,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 
-const Database_conn = '';
+const Database_conn = process.env.DATABASE_URL;
 const sequelize = new Sequelize(Database_conn);
 
 const Book = sequelize.define('books', {
